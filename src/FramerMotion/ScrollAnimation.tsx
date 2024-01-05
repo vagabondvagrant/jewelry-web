@@ -52,13 +52,16 @@ const AnimatedScrollComponent: React.FC<AnimatedScrollComponentProps> = ({ image
       transition={{ duration: 1, ease: 'easeInOut' }}
       className="mt-6"
     >
-      {image && <img src={image} alt="Jewelry" className="w-full h-auto" />}
-      {name && <p className="text-xl font-bold">{name}</p>}
-      {description && <p className='text-white'>{description}</p>}
-      {price && <p>Price: ${price}</p>}
-      <button className="bg-blue-700 hover:bg-blue-500 rounded-[15px] text-white p-2 md:rounded-[25px] mt-1 mb-2 md:mt-3" onClick={onClick}>
-        Add to Cart
-      </button>
+      {image && <img src={image} alt="Jewelry" className="w-full h-30 rounded-[16px]" />}
+      {name && <p className="text-xl text-white font-semibold hover:bg-gray-500 hover:rounded-lg hover:text-gray-900 hover:font-semibold text-center">{name}</p>}
+      {description && <p className='text-white font-semibold hover:bg-gray-500 hover:rounded-lg'>{description}</p>}
+      {price && <p className="text-white bg-gray-500 rounded-lg font-bold hover:bg-slate-500  hover:rounded-lg text-center">Price: ${price}</p>}
+      <div className="flex justify-center items-center">
+  <button className="bg-blue-700 hover:bg-blue-500 rounded-[15px] text-white p-2 md:rounded-[25px] mt-3 mb-2 md:mt-3" onClick={onClick}>
+    Add to Cart
+  </button>
+</div>
+
     </motion.div>
   );
 };

@@ -1,3 +1,4 @@
+import Categories from "./Categories/Categories"
 import { ContactUs } from "./Email/SendMail"
 import JewelryScroll from "./FramerMotion/JewelryScroll"
 
@@ -7,6 +8,7 @@ function App() {
     <div className="">
       <JewelryScroll/>
       <ContactUs/>
+      <Categories/>
     </div>
   )
 }
