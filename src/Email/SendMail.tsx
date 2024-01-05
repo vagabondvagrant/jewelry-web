@@ -1,17 +1,20 @@
-import React, { useRef, FormEvent } from 'react';
+import React, { useRef, useState, FormEvent } from 'react';
 import emailjs from 'emailjs-com';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface ContactUsProps {}
 
 export const ContactUs: React.FC<ContactUsProps> = () => {
   const form = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
 
   const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
+      setIsSending(true); 
+
       if (form.current) {
         const result = await emailjs.sendForm(
           'service_lphm36v',
@@ -26,6 +29,8 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
     } catch (error) {
       console.error('Error sending email:', error);
       toast.error('Error: Something went wrong.');
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -33,7 +38,7 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center mb-6">Contact Us to Buy Magnificent Jewelry</h1>
+      <h1 className="text-[22px] font-bold text-center mb-4 md:text-3xl">Contact Us to Buy Magnificent Jewelry</h1>
       <form
         ref={form}
         onSubmit={sendEmail}
@@ -77,10 +82,13 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
 
         <input
           type="submit"
-          value="Send"
-          className="bg-blue-700  text-white font-bold py-2 px-4 rounded-full cursor-pointer hover:bg-blue-500"
+          value={isSending ? 'Sending...' : 'Send'}
+          className={`bg-blue-700 text-white font-bold py-2 px-4 rounded-full cursor-pointer hover:bg-blue-500 ${isSending ? 'opacity-50' : ''}`}
+          disabled={isSending}
         />
       </form>
+
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
     </div>
   );
 };
