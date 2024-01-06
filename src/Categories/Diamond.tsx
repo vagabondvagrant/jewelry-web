@@ -54,7 +54,7 @@ const CarouselComponent = () => {
           <div key={pearl.id} className="h-10">
             <img src={pearl.image} alt={pearl.alt} className="" />
             <p className="text-center mt-2">${pearl.price}</p>
-            <button onClick={() => handleAddToCart(pearl)}>Add to Cart</button>
+            <button className='bg-customcolor text-xl text-white' onClick={() => handleAddToCart(pearl)}>Add to Cart</button>
           </div>
         ))}
       </Slider>

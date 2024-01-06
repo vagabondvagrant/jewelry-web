@@ -54,7 +54,7 @@ const Bangles = () => {
           <div key={bangle.id} className="h-10">
             <img src={bangle.image} alt={bangle.alt} className="" />
             <p className="text-center mt-2">${bangle.price}</p>
-            <button onClick={() => handleAddToCart(bangle)}>Add to Cart</button>
+            <button className='bg-customcolor text-xl text-white' onClick={() => handleAddToCart(bangle)}>Add to Cart</button>
           </div>
         ))}
       </Slider>

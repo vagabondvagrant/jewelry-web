@@ -54,7 +54,7 @@ const Gold = () => {
           <div key={goldItem.id} className="h-10">
             <img src={goldItem.image} alt={goldItem.alt} className="" />
             <p className="text-center mt-2">${goldItem.price}</p>
-            <button onClick={() => handleAddToCart(goldItem)}>Add to Cart</button>
+            <button className='bg-customcolor text-xl text-white' onClick={() => handleAddToCart(goldItem)}>Add to Cart</button>
           </div>
         ))}
       </Slider>

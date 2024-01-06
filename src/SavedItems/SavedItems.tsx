@@ -1,131 +1,70 @@
-// import  { useState } from 'react';
-// import { useCart } from '../Context/CartContext';
-// import { IoCartOutline } from 'react-icons/io5';
-// import Modal from 'react-modal';
+import  { useState } from 'react';
+import { useCart } from '../Context/CartContext';
+import { IoCartOutline } from 'react-icons/io5';
+import Modal from 'react-modal';
 
-// const SavedItems: React.FC = () => {
-//   const { items, removeFromCart } = useCart();
-//   const [isModalOpen, setIsModalOpen] = useState(false);
+const SavedItems: React.FC = () => {
+  const { items, removeFromCart } = useCart();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-//   const toggleModal = () => {
-//     setIsModalOpen(!isModalOpen);
-//   };
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
-//   return (
-//     <div>
-//       <button onClick={toggleModal}>
-//         <IoCartOutline />
-//       </button>
+  return (
+    <div>
+      <button onClick={toggleModal}>
+        <IoCartOutline />
+      </button>
+      <Modal
+      isOpen={isModalOpen}
+      onRequestClose={toggleModal}
+  
+>
+  <h2 className='text-customcolor text-3xl text-center font-semibold hover:bg-gray-900 hover:text-white hover:rounded-lg mb-4'>Saved Items</h2>
+  {items.length === 0 ? (
+    <p className='text-2xl text-center text-customcolor font-semibold'>
+      You haven't saved any items yet.
+    </p>
+  ) : (
+    <div >
+    <form>
+      <ul>
+        {items.map((item) => (
+          <li key={item.id} className="flex justify-center mb-2 p-2 border rounded ">
+            <div className="flex items-center ">
+              <h3 className="text-lg font-semibold mr-4">{item.name}</h3>
+              <span className="text-gray-600">${item.price}</span>
+              <img
+                src={item.image}
+                alt={item.name}
+              />
+            </div>
+            <button
+              type="button"
+              className="text-white bg-gray-900 px-2 py-1 rounded hover:bg-gray-600"
+              onClick={() => removeFromCart(item.id)}
+              >
+              delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </form>
+  </div>
+  )}
+  <div className='flex justify-center bg-gray-800 h-10 hover:bg-gray-600'>
+  <button
+  className=' text-white'
+    onClick={toggleModal}
+    >
+    Close Modal
+  </button>
+  </div>
+</Modal>
+    </div>
+  );
+};
 
-//       <Modal
-//         isOpen={isModalOpen}
-//         onRequestClose={toggleModal}
-//         contentLabel="Saved Items Modal"
-//       >
-//         <h2>Saved Items</h2>
-//         {items.length === 0 ? (
-//           <p>You haven't saved any items yet.</p>
-//         ) : (
-//           <form>
-//             <ul>
-//               {items.map((item) => (
-//                 <li key={item.id}>
-//                   {item.name}
-//                   { <img src={item.image} alt={item.name} />}
-//                   <button type="button" onClick={() => removeFromCart(item.id)}>
-//                     Remove from Cart
-//                   </button>
-//                 </li>
-//               ))}
-//             </ul>
-//           </form>
-//         )}
-//         <button onClick={toggleModal}>Close</button>
-//       </Modal>
-//     </div>
-//   );
-// };
+export default SavedItems;
 
-// export default SavedItems;
-
-// // import { useState, useEffect, useRef } from 'react';
-// // import { useCart } from '../Context/CartContext';
-// // import { IoCartOutline } from 'react-icons/io5';
-// // import Modal from 'react-modal';
-
-// // const SavedItems: React.FC = () => {
-// //   const { items, removeFromCart } = useCart();
-// //   const [isModalOpen, setIsModalOpen] = useState(false);
-// //   const inputRef = useRef<HTMLInputElement>(null);
-
-// //   const toggleModal = () => {
-// //     setIsModalOpen(!isModalOpen);
-// //   };
-
-// //   useEffect(() => {
-// //     // Focus on the input field when the modal opens
-// //     if (isModalOpen && inputRef.current) {
-// //       inputRef.current.focus();
-// //     }
-// //   }, [isModalOpen]);
-
-// //   return (
-// //     <div className="text-center">
-// //       <button
-// //         onClick={toggleModal}
-// //         className="bg-blue-500 text-white p-2 rounded-full focus:outline-none"
-// //       >
-// //         <IoCartOutline />
-// //       </button>
-
-// //       <Modal
-// //         isOpen={isModalOpen}
-// //         onRequestClose={toggleModal}
-// //         contentLabel="Saved Items Modal"
-// //         className="modal-content"
-// //         overlayClassName="modal-overlay"
-// //       >
-// //         <div className="p-4">
-// //           <h2 className="text-2xl font-bold mb-4">Saved Items</h2>
-// //           {items.length === 0 ? (
-// //             <p className="text-gray-600">You haven't saved any items yet.</p>
-// //           ) : (
-// //             <form>
-// //               <ul className="list-none p-0 m-0">
-// //                 {items.map((item) => (
-// //                   <li key={item.id} className="flex items-center mb-2">
-// //                     <div className="flex-shrink-0">
-// //                       <img
-// //                         src={item.image}
-// //                         alt={item.name}
-// //                         className="w-12 h-12 object-cover rounded-lg"
-// //                       />
-// //                     </div>
-// //                     <div className="ml-3">
-// //                       <p className="text-lg font-medium">{item.name}</p>
-// //                       <button
-// //                         type="button"
-// //                         onClick={() => removeFromCart(item.id)}
-// //                         className="text-red-500 text-sm"
-// //                       >
-// //                         Remove from Cart
-// //                       </button>
-// //                     </div>
-// //                   </li>
-// //                 ))}
-// //               </ul>
-// //             </form>
-// //           )}  
-// //           <button
-// //             onClick={toggleModal}
-// //             className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full focus:outline-none"
-// //           >
-// //             Close
-// //           </button>
-// //         </div>
-// //       </Modal>
-// //     </div>
-// //   );
-// // };
-
-// // export default SavedItems;
