@@ -1,6 +1,6 @@
 import React from 'react';
 import AnimatedScrollComponent from './ScrollAnimation';
-// import { useCart } from '../Context/CartContext';
+import { useCart } from '../Context/CartContext';
 import { toast } from 'react-toastify'; // Import the toast module
 import 'react-toastify/dist/ReactToastify.css'; // Import the styles for toast notifications
 import First from './First.jpg';
@@ -13,7 +13,7 @@ import Sev from './Sev.jpg';
 import Eight from './Eight.jpg';
 
 const JewelryScroll: React.FC = () => {
-//   const { addToCart } = useCart();
+  const { addToCart } = useCart();
 
   const jewelryData = [
     { id: 1, image: First, name: 'Expensive Jewelry 1', description: 'This is a beautiful piece of jewelry with intricate design.', price: 1000 },
@@ -27,7 +27,7 @@ const JewelryScroll: React.FC = () => {
   ];
 
   const handleAddToCart = (jewelry:any) => {
-    // addToCart(jewelry);
+    addToCart(jewelry);
     toast.success(`${jewelry.name} has been added to the cart!`, {
       position: "top-right",
       autoClose: 3000,

@@ -1,4 +1,5 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Categories from "./Categories/Categories";
 import { CartProvider } from "./Context/CartContext";
 import { ContactUs } from "./Email/SendMail";
@@ -9,6 +10,7 @@ import Comment from "./Starreview/Comment";
 import WhatsappContact from "./Social/Whatsapp";
 import SignUpForm from "./SignUp/SignUp";
 import NavBar from './NavBar/NavBar';
+import About from './About';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,28 +22,42 @@ function App() {
   };
 
   return (
-    <div className="">
-      <CartProvider>
-        {/* Conditionally render components based on isLoggedIn */}
-        {isLoggedIn ? (
-          <>
-            <NavBar/>
-            <JewelryScroll />
-            <ContactUs />
-            <StarReview />
-            <div className="flex justify-center text-3xl mt-4 hover:bg-customcolor hover:text-white">
-              <SavedItems />
-            </div>
-            <Comment />
-            <Categories />
-            <WhatsappContact />
-          </>
-        ) : (
-          // Render SignUpForm if not logged in
-          <SignUpForm onLogin={handleLogin} />
-        )}
-      </CartProvider>
-    </div>
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                {isLoggedIn ? (
+                  <>
+                    <NavBar />
+                    <JewelryScroll />
+                    <ContactUs />
+                    <StarReview />
+                    <div className="flex justify-center text-3xl mt-4 hover:bg-customcolor hover:text-white">
+                      {/* <SavedItems /> */}
+                    </div>
+                    <Comment />
+                    <WhatsappContact />
+                  </>
+                ) : (
+                  <SignUpForm onLogin={handleLogin} />
+                )}
+                <Outlet /> {/* This is where nested routes will be rendered */}
+              </div>
+            }
+          />
+          <Route
+            path="categories/*"
+            element={<Categories />}
+          >
+            <Route path="saved" element={<SavedItems />} />
+            <Route path="about" element={<About />} />
+          </Route>
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 

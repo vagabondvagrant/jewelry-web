@@ -99,7 +99,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onLogin }) => {
 
         <button
           type="submit"
-          className="bg-gray-700 text-white py-2 px-4 rounded-full hover:opacity-70 hover:text-white"
+          className="bg-gray-700 text-white text-[18px]  py-2 px-4 rounded-full hover:opacity-70 hover:text-white"
         >
           Sign in
         </button>

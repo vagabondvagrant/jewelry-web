@@ -5,7 +5,7 @@ import Gold from './Gold';
 import Bangles from './Bangles';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import FooterC from './FooterC';
-
+import SavedItems from '../SavedItems/SavedItems';
 type CategoriesProps = {};
 
 type SelectedCategories = 'Diamond' | 'Gold' | 'Bangles';
@@ -18,10 +18,12 @@ const Categories: React.FC<CategoriesProps> = () => {
     Bangles: false,
   });
 
-  const fadeIn = useSpring({
+  const springConfig = { tension: 300, friction: 20 };
+  const animateTitle = useSpring({
     opacity: 1,
-    transform: 'translateY(3)',
-    from: { opacity: 0, transform: 'translateY(50px)' },
+    transform: 'translateY(0)',
+    from: { opacity: 0, transform: 'translateY(-10px)' },
+    config: springConfig,
   });
 
   const handleCategoryClick = (category: SelectedCategories) => {
@@ -40,7 +42,7 @@ const Categories: React.FC<CategoriesProps> = () => {
   };
 
   return (
-    <animated.div style={fadeIn} className="py-8 px-4 md:px-8 lg:px-16 xl:px-32">
+    <animated.div style={animateTitle} className="py-8 px-4 md:px-8 lg:px-16 xl:px-32">
       <h1 className="flex justify-center text-[1.5rem] md:text-3xl mb-7 font-bold bg-gray-200 hover:rounded text-customcolor">
         Jewelry Categories
       </h1>
@@ -78,10 +80,10 @@ const Categories: React.FC<CategoriesProps> = () => {
         {categoryVisibility.Bangles && selectedCategories.includes('Bangles') && <Bangles />}
       </div>
 
-      <div className="bg-customcolor rounded-lg text-white font-semibold flex justify-center mt-2 text-xl" >
+      <div className="bg-customcolor rounded-lg text-white font-semibold flex justify-center mt-2 text-xl">
         Swipe right or left to see the items
       </div>
-
+      <SavedItems/>
       <FooterC />
     </animated.div>
   );
