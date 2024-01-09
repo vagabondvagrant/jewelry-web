@@ -5,6 +5,7 @@ import JewelryScroll from "./FramerMotion/JewelryScroll"
 // import Home from "./Pages/Home"
 import SavedItems from "./SavedItems/SavedItems"
 import StarReview from "./Starreview/StarReview"
+import Comment from "./Starreview/Comment"
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
       <SavedItems />
       </div>
       <Categories/>
+      <Comment/>
       </CartProvider>
     </div>
   )
