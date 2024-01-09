@@ -8,6 +8,7 @@ import StarReview from "./Starreview/StarReview";
 import Comment from "./Starreview/Comment";
 import WhatsappContact from "./Social/Whatsapp";
 import SignUpForm from "./SignUp/SignUp";
+import NavBar from './NavBar/NavBar';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,6 +25,7 @@ function App() {
         {/* Conditionally render components based on isLoggedIn */}
         {isLoggedIn ? (
           <>
+            <NavBar/>
             <JewelryScroll />
             <ContactUs />
             <StarReview />

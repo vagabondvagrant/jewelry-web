@@ -18,7 +18,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onLogin }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors }, // Remove explicit destructuring of formState
+    formState: { errors }, 
   } = useForm<SignUpFormData>();
 
   const [showPassword, setShowPassword] = useState<boolean | undefined>(false); // Change type to boolean | undefined
@@ -42,7 +42,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="bg-customcolor flex flex-col justify-center items-center h-screen opacity-90">
+    <div className="bg-gray-900 flex flex-col justify-center items-center h-screen opacity-90">
       <div className="flex flex-col items-center mb-4">
         <h2 className="text-white text-lg mb-8 text-center">
           It is just a sample page. You won't be able to log in if you change the username or password.
@@ -99,7 +99,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onLogin }) => {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-400 hover:text-white hover:font-semibold"
+          className="bg-gray-700 text-white py-2 px-4 rounded-full hover:opacity-70 hover:text-white"
         >
           Sign in
         </button>
