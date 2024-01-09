@@ -37,16 +37,16 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
   const defaultRecipientEmail = 'kab6168@gmail.com';
 
   return (
-    <div>
-      <h1 className="text-[22px] font-bold text-center mb-4 md:text-3xl">Contact Us to Buy Magnificent Jewelry</h1>
+    <div className='bg-gray-900'>
+      <h1 className="text-[22px] font-bold text-center mb-4 md:text-3xl bg-gray-700 text-white italic">Contact Us to Buy Magnificent Jewelry</h1>
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="max-w-md mx-auto p-6 bg-white rounded shadow-md text-black font-semibold md:max-w-xl"
+        className="max-w-md mx-auto p-6 bg-gray-900 rounded shadow-md text-black font-semibold md:max-w-xl"
       >
         <input type="hidden" name="to_email" value={defaultRecipientEmail} />
 
-        <label htmlFor="user_name" className="block text-gray-700 text-sm font-bold mb-2">
+        <label htmlFor="user_name" className="block text-white text-sm font-bold mb-2">
           Name
         </label>
         <input
@@ -57,7 +57,7 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
           required
         />
 
-        <label htmlFor="user_email" className="block text-gray-700 text-sm font-bold mb-2">
+        <label htmlFor="user_email" className="block text-white text-sm font-bold mb-2">
           Email
         </label>
         <input
@@ -70,7 +70,7 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
           required
         />
 
-        <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">
+        <label htmlFor="message" className="block text-white text-sm font-bold mb-2">
           Message
         </label>
         <textarea

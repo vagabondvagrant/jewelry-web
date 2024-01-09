@@ -5,7 +5,6 @@ import Gold from './Gold';
 import Bangles from './Bangles';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import FooterC from './FooterC';
-import SavedItems from '../SavedItems/SavedItems';
 
 type CategoriesProps = {};
 
@@ -48,7 +47,7 @@ const Categories: React.FC<CategoriesProps> = () => {
 
       <div className="mb-4 mx-auto text-center">
         <h1
-          className="text-2xl font-bold cursor-pointer hover:bg-yellow-900 hover:rounded hover:text-white"
+          className="text-2xl font-bold cursor-pointer hover:bg-yellow-800 hover:rounded-full hover:text-white"
           onClick={() => handleCategoryClick('Diamond')}
         >
           Diamond Categories
@@ -59,7 +58,7 @@ const Categories: React.FC<CategoriesProps> = () => {
 
       <div className="mb-4 mx-auto text-center">
         <h1
-          className="text-2xl font-bold cursor-pointer hover:bg-yellow-900 hover:rounded hover:text-white"
+          className="text-2xl font-bold cursor-pointer hover:bg-yellow-800 hover:rounded-full hover:text-white"
           onClick={() => handleCategoryClick('Gold')}
         >
           Gold Categories
@@ -70,7 +69,7 @@ const Categories: React.FC<CategoriesProps> = () => {
 
       <div className="mx-auto text-center">
         <h1
-          className="text-2xl font-bold cursor-pointer hover:bg-yellow-900 hover:rounded hover:text-white"
+          className="text-2xl font-bold cursor-pointer hover:bg-yellow-800 hover:rounded-full hover:text-white"
           onClick={() => handleCategoryClick('Bangles')}
         >
           Bangles Categories
@@ -79,12 +78,11 @@ const Categories: React.FC<CategoriesProps> = () => {
         {categoryVisibility.Bangles && selectedCategories.includes('Bangles') && <Bangles />}
       </div>
 
-      <div className="bg-customcolor rounded-lg text-white font-semibold flex justify-center text-xl" >
+      <div className="bg-customcolor rounded-lg text-white font-semibold flex justify-center mt-2 text-xl" >
         Swipe right or left to see the items
       </div>
 
       <FooterC />
-      <SavedItems/>
     </animated.div>
   );
 };

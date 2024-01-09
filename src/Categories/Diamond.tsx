@@ -52,9 +52,9 @@ const CarouselComponent = () => {
       <Slider {...settings}>
         {pearls.map((pearl) => (
           <div key={pearl.id} className="h-10">
-            <img src={pearl.image} alt={pearl.alt} className="" />
-            <p className="text-center mt-2">${pearl.price}</p>
-            <button className='bg-customcolor text-xl text-white' onClick={() => handleAddToCart(pearl)}>Add to Cart</button>
+            <img src={pearl.image} alt={pearl.alt} className="rounded-[16px]" />
+            <p className="text-center mt-2 bg-gray-700 hover:opacity-70 font-semibold text-white rounded-lg">${pearl.price}</p>
+            <button className='bg-customcolor rounded-full p-2 hover:opacity-70 text-xl text-white mt-2' onClick={() => handleAddToCart(pearl)}>Add to Cart</button>
           </div>
         ))}
       </Slider>
