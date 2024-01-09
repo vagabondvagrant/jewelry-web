@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Categories from "./Categories/Categories";
 import { CartProvider } from "./Context/CartContext";
@@ -12,7 +12,9 @@ import SignUpForm from "./SignUp/SignUp";
 import NavBar from './NavBar/NavBar';
 import About from './About';
 
-function App() {
+interface AppProps {}
+
+const App: React.FC<AppProps> = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // This function will be passed as a prop to SignUpForm
