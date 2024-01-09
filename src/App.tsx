@@ -10,7 +10,7 @@ import Comment from "./Starreview/Comment";
 import WhatsappContact from "./Social/Whatsapp";
 import SignUpForm from "./SignUp/SignUp";
 import NavBar from './NavBar/NavBar';
-import About from './About';
+import About from './About'
 
 interface AppProps {}
 
