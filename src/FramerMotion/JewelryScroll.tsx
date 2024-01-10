@@ -39,7 +39,7 @@ const JewelryScroll: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-row flex-wrap bg-gray-700 p-4 md:bg-gray-900 justify-center md:grid md:grid-cols-3 md:gap-5">
+    <div id="jewelry" className="flex flex-row flex-wrap bg-gray-700 p-4 md:bg-gray-900 justify-center md:grid md:grid-cols-3 md:gap-5">
       <div className="col-span-full flex justify-center items-center mb-7 w-full">
         <h1 className="text-2xl font-bold text-white md:text-4xl md:mt-6">Expensive Jewelry Collection</h1>
       </div>
@@ -54,7 +54,7 @@ const JewelryScroll: React.FC = () => {
         />
       ))}
        <footer className="flex justify-center text-center text-white mt-auto py-4 md:py-8 md:text-[30px] font-semibold ">
-        <p className='hover:bg-customcolor hover:rounded-lg  '>&copy; 2023 Expensive Jewelry Collection. All rights reserved.</p>
+        <p className='hover:bg-customcolor hover:rounded-lg md:text-xl '>&copy; 2023 Expensive Jewelry Collection. All rights reserved.</p>
       </footer>
     </div>
   );

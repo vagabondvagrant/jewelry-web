@@ -37,8 +37,8 @@ export const ContactUs: React.FC<ContactUsProps> = () => {
   const defaultRecipientEmail = 'kab6168@gmail.com';
 
   return (
-    <div className='bg-gray-900'>
-      <h1 className="text-[22px] font-bold text-center mb-4 md:text-3xl bg-gray-700 text-white italic">Contact Us to Buy Magnificent Jewelry</h1>
+    <div id="mail" className='bg-gray-900'>
+      <h1 className="text-[22px] font-bold text-center mb-4 md:text-3xl bg-gray-400 text-white italic">Contact Us to Buy Magnificent Jewelry</h1>
       <form
         ref={form}
         onSubmit={sendEmail}

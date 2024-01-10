@@ -8,7 +8,8 @@ const Comment: React.FC<CommentProps> = () => {
   const [comment, setComment] = useState('');
   const [timestamp, setTimestamp] = useState('');
   const [isEditable, setIsEditable] = useState(false);
-  const [comments, setComments] = useState<string[]>([]);
+  const [comments, setComments] = useState<{ id: string; text: string; likes: number }[]>([]);
+  const [likes, setLikes] = useState<number[]>([]);
   const maxCharacters = 150;
   const editTimeframeInSeconds = 60;
 
@@ -19,6 +20,10 @@ const Comment: React.FC<CommentProps> = () => {
     setTimestamp(`${hours}:${minutes}`);
   }, []);
 
+  const generateRandomUserId = () => {
+    return Math.random().toString(36).substring(2, 10); // Generate a random user ID
+  };
+
   const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newComment = event.target.value;
     if (newComment.length <= maxCharacters) {
@@ -28,13 +33,11 @@ const Comment: React.FC<CommentProps> = () => {
 
   const handleSubmit = () => {
     if (comment.trim() !== '') {
-      // Handle submission logic directly within the component
-      console.log('Comment submitted:', comment);
+      const userId = generateRandomUserId();
 
-      // Update the list of comments
-      setComments((prevComments) => [...prevComments, comment]);
+      setComments((prevComments) => [...prevComments, { id: userId, text: comment, likes: 0 }]);
+      setLikes((prevLikes) => [...prevLikes, 0]);
 
-      // Reset state and show success toast
       setComment('');
       toast.success('Comment submitted successfully!', {
         position: 'bottom-right',
@@ -69,6 +72,9 @@ const Comment: React.FC<CommentProps> = () => {
     const updatedComments = [...comments];
     updatedComments.splice(index, 1);
     setComments(updatedComments);
+    const updatedLikes = [...likes];
+    updatedLikes.splice(index, 1);
+    setLikes(updatedLikes);
     toast.info('Comment deleted successfully!', {
       position: 'bottom-right',
       autoClose: 3000,
@@ -80,9 +86,15 @@ const Comment: React.FC<CommentProps> = () => {
     });
   };
 
+  const handleLike = (index: number) => {
+    const updatedLikes = [...likes];
+    updatedLikes[index]++;
+    setLikes(updatedLikes);
+  };
+
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded-md shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Leave a Comment</h2>
+    <div id="comment" className="max-w-md mx-auto p-4 bg-white rounded-md shadow-md">
+      <h2 className="text-2xl font-bold mb-4">Discussion Form</h2>
       <div className="flex items-center mb-2">
         <textarea
           className="w-full h-20 p-2 border rounded-md"
@@ -97,13 +109,13 @@ const Comment: React.FC<CommentProps> = () => {
         {isEditable ? (
           <div className="flex">
             <button
-              className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-700"
+              className="bg-gray-900 text-white px-4 py-2 rounded-full mr-2 hover:bg-gray-700"
               onClick={handleSubmit}
             >
               Save
             </button>
             <button
-              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-700"
+              className="bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-700"
               onClick={() => setIsEditable(false)}
             >
               Cancel
@@ -131,19 +143,33 @@ const Comment: React.FC<CommentProps> = () => {
           </div>
         )}
       </div>
-      <div className="text-white mt-2 font-semibold bg-cyan-800 rounded-full p-2 text-center hover:opacity-70">Submitted at {timestamp}</div>
+      <div className="text-white mt-2 font-semibold bg-cyan-800 rounded-full p-2 text-center hover:opacity-70">
+        Submitted at {timestamp}
+      </div>
 
       <div className="mt-4">
         <h3 className="text-lg font-semibold mb-2">Submitted Comments:</h3>
-        {comments.map((submittedComment, index) => (
+        {comments.map((commentObj, index) => (
           <div key={index} className="flex items-center justify-between">
-            <p className='bg-gray-900 text-white rounded-full hover:opacity-70 p-2'>{submittedComment}</p>
-            <button
-              className="text-white font-semibold border-pink-600 bg-red-900 rounded-full p-2 hover:bg-red-700"
-              onClick={() => handleDelete(index)}
-            >
-              Delete
-            </button>
+            <p className="bg-gray-900 text-white rounded-full hover:opacity-70 p-2">
+              {commentObj.text}
+              <span className="ml-2 text-gray-500">Likes: {likes[index]}</span>
+              <span className="ml-2 text-gray-500">User ID: {commentObj.id}</span>
+            </p>
+            <div className="flex items-center">
+              <button
+                className="text-white font-semibold border-pink-600 bg-red-900 rounded-full p-2 hover:bg-red-700 mr-2"
+                onClick={() => handleDelete(index)}
+              >
+                Delete
+              </button>
+              <button
+                className="bg-blue-700 rounded-full text-white p-2 hover:bg-blue-400 mr-2"
+                onClick={() => handleLike(index)}
+              >
+                &#x1F44D;
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -152,3 +178,4 @@ const Comment: React.FC<CommentProps> = () => {
 };
 
 export default Comment;
+

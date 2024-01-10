@@ -54,7 +54,7 @@ const Bangles = () => {
           <div key={bangle.id} className="h-10">
             <img src={bangle.image} alt={bangle.alt} className="rounded-[16px]" />
             <p className="text-center mt-2 bg-gray-700 hover:opacity-70 font-semibold text-white rounded-lg">${bangle.price}</p>
-            <button className='bg-customcolor rounded-full p-2 hover:opacity-70 text-xl text-white mt-2' onClick={() => handleAddToCart(bangle)}>Add to Cart</button>
+            <button className='bg-customcolor rounded-full p-2 hover:opacity-70 text-[14px] text-white mt-2' onClick={() => handleAddToCart(bangle)}>Add to Cart</button>
           </div>
         ))}
       </Slider>
