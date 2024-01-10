@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaWhatsapp, FaTimes, FaCopy } from 'react-icons/fa';
 
 const WhatsappContact: React.FC = () => {
-  const phoneNumber = '03186112144'; // Hardcoded phone number
+  const phoneNumber = '03414433662'; // Hardcoded phone number
 
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ top: 16, left: 16 });
