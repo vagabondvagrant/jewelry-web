@@ -78,8 +78,8 @@ const StarReview: React.FC = () => {
   };
 
   return (
-    <div className={`text-center ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
-      <p className="text-lg font-semibold">How was your experience?</p>
+    <div id="review" className={`text-center ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
+      <p className="text-xl font-semibold">How was your experience?</p>
       <div className="flex items-center justify-center space-x-2">
         {[...Array(totalStars)].map((_, index) => (
           <FaStar

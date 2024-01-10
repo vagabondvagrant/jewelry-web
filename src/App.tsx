@@ -2,21 +2,24 @@ import React, { useState } from 'react';
 import { CartProvider } from "./Context/CartContext";
 import { ContactUs } from "./Email/SendMail";
 import JewelryScroll from "./FramerMotion/JewelryScroll";
-import SavedItems from "./SavedItems/SavedItems";
 import StarReview from "./Starreview/StarReview";
 import Comment from "./Starreview/Comment";
 import WhatsappContact from "./Social/Whatsapp";
 import SignUpForm from "./SignUp/SignUp";
 import NavBar from './NavBar/NavBar';
+import Categories from './Categories/Categories';
+import NavBarDesktop from './NavBar/NavBar2';
+import { Cart } from './SavedItems/Cart';
+import GoToTopBottomIcons from './GotoTopBo/GotoTopBottom';
+import Footer from './Categories/FooterC';
+import JewelryPoll from './Poll/Poll';
 
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // This function will be passed as a prop to SignUpForm
   const handleLogin = () => {
-    // Perform any login logic you need
     setIsLoggedIn(true);
   };
 
@@ -25,16 +28,19 @@ const App: React.FC<AppProps> = () => {
       <div>
         {isLoggedIn ? (
           <>
+          <NavBarDesktop/>
             <NavBar />
+            <Cart/>
             <JewelryScroll />
-            <ContactUs />
-            <SavedItems/>
+            <Categories/>
             <StarReview />
-            <div className="flex justify-center text-3xl mt-4 hover:bg-customcolor hover:text-white">
-              {/* <SavedItems /> */}
-            </div>
             <Comment />
+            <ContactUs />
+            <JewelryPoll/>
             <WhatsappContact />
+
+            <Footer/>
+            <GoToTopBottomIcons/>
           </>
         ) : (
           <SignUpForm onLogin={handleLogin} />
