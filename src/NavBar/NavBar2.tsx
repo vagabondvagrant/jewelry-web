@@ -25,9 +25,10 @@ const NavBarDesktop: React.FC = () => {
     { to: 'categories', text: 'Categories' },
     { to: 'jewelry', text: 'Jewelry' },
     { to: 'cart', text: 'Cart' },
-    { to: 'comment', text: 'Comment' },
+    { to: 'comment', text: 'Discussion Forum' },
     { to: 'review', text: 'Review' },
     { to: 'poll', text: 'Jewelry Poll' },
+    { to: 'github', text: 'Github' },
   ];
 
   return (

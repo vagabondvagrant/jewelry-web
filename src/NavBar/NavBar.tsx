@@ -71,7 +71,7 @@ const NavBar: React.FC = () => {
         </li>
         <li className="hover:text-gray-300 hover:border-b hover:border-gray-300 transition duration-300">
           <Link to="comment" onClick={() => scrollToElement('comment')}>
-            Comment
+            Discussion Forum
           </Link>
         </li>
         <li className="hover:text-gray-300 hover:border-b hover:border-gray-300 transition duration-300">
@@ -82,6 +82,11 @@ const NavBar: React.FC = () => {
         <li className="hover:text-gray-300 hover:border-b hover:border-gray-300 transition duration-300">
           <Link to="poll" onClick={() => scrollToElement('poll')}>
             Jewelry Poll
+          </Link>
+        </li>
+        <li className="hover:text-gray-300 hover:border-b hover:border-gray-300 transition duration-300">
+          <Link to="github" onClick={() => scrollToElement('github')}>
+            Github
           </Link>
         </li>
       </ul>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CartProvider } from "./Context/CartContext";
 import { ContactUs } from "./Email/SendMail";
 import JewelryScroll from "./FramerMotion/JewelryScroll";
@@ -13,22 +13,36 @@ import { Cart } from './SavedItems/Cart';
 import GoToTopBottomIcons from './GotoTopBo/GotoTopBottom';
 import Footer from './Categories/FooterC';
 import JewelryPoll from './Poll/Poll';
+import GitHubLink from './RandomCarousa';
 
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <CartProvider>
       <div>
         {isLoggedIn ? (
           <>
-          <NavBarDesktop/>
+            {isMobile ? null : <NavBarDesktop />}
             <NavBar />
             <Cart/>
             <JewelryScroll />
@@ -38,7 +52,7 @@ const App: React.FC<AppProps> = () => {
             <ContactUs />
             <JewelryPoll/>
             <WhatsappContact />
-
+            <GitHubLink/> 
             <Footer/>
             <GoToTopBottomIcons/>
           </>
