@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import User from '../SignUp/User';
 
 const NavBar: React.FC = () => {
@@ -13,11 +12,11 @@ const NavBar: React.FC = () => {
       {/* Conditionally render ul on devices other than short devices */}
       <ul className="hidden sm:flex h-20 bg-gray-700 text-white justify-center items-center space-x-4">
         {/* Your navigation items go here */}
-        <li className="hover:text-gray-300"><Link to="/">Home</Link></li>
-        <li className="hover:text-gray-300"><Link to="/about">About</Link></li>
-        <li className="hover:text-gray-300"><Link to="/contact">Contact</Link></li>
+        <li className="hover:text-gray-300"><a href="/">Home</a></li>
+        <li className="hover:text-gray-300"><a href="/about">About</a></li>
+        <li className="hover:text-gray-300"><a href="/contact">Contact</a></li>
         {/* Add a link to the Categories page */}
-        <li className="hover:text-gray-300"><Link to="/categories">Categories</Link></li>
+        <li className="hover:text-gray-300"><a href="/categories">Categories</a></li>
         {/* Add more navigation items as needed */}
       </ul>
     </div>
